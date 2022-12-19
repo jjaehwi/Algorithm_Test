@@ -1,11 +1,16 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
+
 int main()
 {
-    double a;
-    cin >> a;
+    long long a, b;
     cout << fixed;
-    cout.precision(11);
-    cout << a;
+    cout.precision(2);
+    cin >> a >> b;
+    cout << a + b << endl;
+    cout << a - b << endl;
+    cout << a * b << endl;
+    cout << a / b << endl;
+    cout << a % b << endl;
+    cout << (float)a / b << endl;
 }
