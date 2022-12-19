@@ -1,9 +1,9 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 int main()
 {
-    int a, b;
-    scanf("%d-%d", &a, &b);
-    printf("%06d%07d", a, b);
-    return 0;
+    string a;
+    getline(cin, a);
+    cout << a;
 }
