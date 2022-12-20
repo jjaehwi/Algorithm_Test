@@ -1,33 +1,39 @@
 #include <iostream>
 using namespace std;
+
+int arr[11][11];
+
+void backtrack(int x, int y)
+{
+    if (arr[x][y] == 2)
+    {
+        arr[x][y] = 9;
+        return;
+    }
+    arr[x][y] = 9;
+
+    if (arr[x][y + 1] != 1)
+        backtrack(x, y + 1);
+    else if (arr[x + 1][y] != 1)
+        backtrack(x + 1, y);
+}
+
 int main()
 {
-    int h, w, n, l, d, x, y;
-    cin >> h >> w;
-    cin >> n;
-    // 2차원 배열 만들기
-    int **arr;
-    arr = new int *[h];
-    for (int i = 0; i < h; i++)
-        arr[i] = new int[w];
-
-    // 막대 입력 받고 배치하기
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < 11; i++)
     {
-        cin >> l >> d >> x >> y;
-        if (d == 0)
-            for (int j = 0; j < l; j++)
-                arr[x - 1][y + j - 1] = 1;
-        if (d == 1)
-            for (int j = 0; j < l; j++)
-                arr[x + j - 1][y - 1] = 1;
+        for (int j = 1; j < 11; j++)
+            cin >> arr[i][j];
     }
 
-    // 2차원 배열 출력하기
-    for (int i = 0; i < h; i++)
+    backtrack(2, 2);
+
+    for (int i = 1; i < 11; i++)
     {
-        for (int j = 0; j < w; j++)
+        for (int j = 1; j < 11; j++)
             cout << arr[i][j] << " ";
-        cout << "\n";
+        cout << endl;
     }
+
+    return 0;
 }
