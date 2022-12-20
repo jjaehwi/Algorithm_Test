@@ -1,35 +1,33 @@
 #include <iostream>
 using namespace std;
-
-int arr[20][20];
-
 int main()
 {
-    for (int i = 1; i < 20; i++)
-    {
-        for (int j = 1; j < 20; j++)
-            cin >> arr[i][j];
-    }
-
-    int n;
+    int h, w, n, l, d, x, y;
+    cin >> h >> w;
     cin >> n;
+    // 2차원 배열 만들기
+    int **arr;
+    arr = new int *[h];
+    for (int i = 0; i < h; i++)
+        arr[i] = new int[w];
 
-    int x, y;
+    // 막대 입력 받고 배치하기
     for (int i = 0; i < n; i++)
     {
-        cin >> x >> y;
-        for (int j = 1; j < 20; j++)
-            arr[x][j] = !arr[x][j];
-        for (int j = 1; j < 20; j++)
-            arr[j][y] = !arr[j][y];
+        cin >> l >> d >> x >> y;
+        if (d == 0)
+            for (int j = 0; j < l; j++)
+                arr[x - 1][y + j - 1] = 1;
+        if (d == 1)
+            for (int j = 0; j < l; j++)
+                arr[x + j - 1][y - 1] = 1;
     }
 
-    for (int i = 1; i < 20; i++)
+    // 2차원 배열 출력하기
+    for (int i = 0; i < h; i++)
     {
-        for (int j = 1; j < 20; j++)
+        for (int j = 0; j < w; j++)
             cout << arr[i][j] << " ";
-        cout << endl;
+        cout << "\n";
     }
-
-    return 0;
 }
