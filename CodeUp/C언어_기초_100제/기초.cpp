@@ -3,11 +3,9 @@ using namespace std;
 
 int main()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    for (int i = 0; i < a; i++)
-        for (int j = 0; j < b; j++)
-            for (int k = 0; k < c; k++)
-                cout << i << " " << j << " " << k << "\n";
-    cout << a * b * c;
+    long long h, b, c, s;
+    cin >> h >> b >> c >> s;
+    cout << fixed;
+    cout.precision(1);
+    cout << (float)(h * b * c * s) / 8 / 1024 / 1024 << " MB" << endl; // bit -> byte -> KB -> MB
 }
