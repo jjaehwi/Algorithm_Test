@@ -5,6 +5,9 @@ int main()
 {
     int a, b, c;
     cin >> a >> b >> c;
-    int x = ((a < b) ? a : b);
-    cout << ((x < c) ? x : c);
+    for (int i = 0; i < a; i++)
+        for (int j = 0; j < b; j++)
+            for (int k = 0; k < c; k++)
+                cout << i << " " << j << " " << k << "\n";
+    cout << a * b * c;
 }
