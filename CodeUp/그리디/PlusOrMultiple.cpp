@@ -13,8 +13,16 @@ int main()
 {
     string s;
     cin >> s;
-    for (int i = 0; i < s.size(); i++)
+    // 첫 번째 문자를 숫자로 변경한 값을 대입
+    long long result = s[0] - '0';
+    for (int i = 1; i < s.size(); i++)
     {
-        // 문자열을 int 형으로 변환해서 하나씩 뽑아서 판단?
+        // 두 수 중에서 하나라도 0 혹은 1 인 경우, 곱하기 대신 더하기를 수행
+        int num = s[i] - '0';
+        if (num <= 1 || result <= 1)
+            result += num;
+        else
+            result *= num;
     }
+    cout << result << "\n";
 }
