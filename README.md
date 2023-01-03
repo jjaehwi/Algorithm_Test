@@ -9,3 +9,5 @@
 - [구현](https://github.com/jjaehwi/Algorithm_Test/tree/main/CodeUp/구현) `2022.12.26 ~ `
 
 - [그래프 탐색 알고리즘](https://github.com/jjaehwi/Algorithm_Test/tree/main/CodeUp/DFS/BFS) `2022.12.30 ~ `
+
+- [정렬 알고리즘](https://github.com/jjaehwi/Algorithm_Test/tree/main/CodeUp/정렬) `2023.01.03 ~`
