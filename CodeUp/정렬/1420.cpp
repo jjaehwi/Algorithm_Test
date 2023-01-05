@@ -1,3 +1,4 @@
+/* 풀이 1
 #include <iostream>
 #include <string>
 #include <vector>
@@ -23,4 +24,35 @@ int main()
     }
     sort(v.begin(), v.end(), compare);
     cout << v[2].first;
+}
+*/
+
+// 풀이 2
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+int main()
+{
+    int n;
+    vector<string> name;
+    vector<int> score;
+    vector<int> rank;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        string a;
+        int b;
+        cin >> a >> b;
+        name.push_back(a);
+        score.push_back(b);
+        rank.push_back(1);
+    }
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (score[i] < score[j])
+                rank[i]++;
+    for (int i = 0; i < n; i++)
+        if (rank[i] == 3)
+            cout << name[i];
 }
