@@ -1,5 +1,7 @@
 # Algorithm_Test
 
+### [BOJ 백준 온라인 저지](https://github.com/jjaehwi/Algorithm_Test/tree/main/백준)
+
 ### CODEUP
 
 - 기초 100제 `2022.12.20 ~ 2022.12.21`
