@@ -4,8 +4,9 @@
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)
 using namespace std;
 
-vector<int> inDegree;
+vector<int> inDegree;            // outdegree는 인접리스트에서 바로 알 수 있는데 indegree에 대해서는 따로 정해줘야한다.
 vector<vector<int>> adj(100001); // 인접리스트
+vector<int> result;
 
 void topologySort(int n)
 {
@@ -20,7 +21,7 @@ void topologySort(int n)
     }
 
     // 완전한 전체 순회를 위해 n개 노드 반복
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         // n개까지 전체 방문하기 전 큐가 비었다면 사이클이 발생했다는 뜻
         if (q.empty())
@@ -30,7 +31,7 @@ void topologySort(int n)
         int front = q.front();
         q.pop();
 
-        cout << front << " ";
+        result.push_back(front);
 
         // 방문한 정점에서 나가는 간선(out-degree)에 대한 계산
         // 해당 간선들이 들어오는 정점, 즉 도착점에서는 들어오는 간선(in-degree)이 줄어드는 것이기 때문에
@@ -52,12 +53,12 @@ int main()
     fastio;
     int n, m, A, B;
     cin >> n >> m;
+    // fill 함수를 써도 됨
     for (int i = 1; i <= n; i++)
         inDegree.push_back(0);
     // 2->5
     // adj[2].push_back(5);
     // inDegree[5]++;
-
     for (int i = 0; i < m; i++)
     {
         cin >> A >> B;
@@ -65,4 +66,7 @@ int main()
         inDegree[B]++;
     }
     topologySort(n);
+
+    for (int i = 0; i < n; i++)
+        cout << result[i] << " ";
 }
