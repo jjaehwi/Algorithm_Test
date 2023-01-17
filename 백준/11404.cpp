@@ -54,16 +54,17 @@ int main()
 
     for (int i = 0; i < m; i++)
     {
-        int a, b, c;
+        long long a, b, c;
         cin >> a >> b >> c;
-        // dist[a][b]가 이미 채워져있다면.. cost가 더 낮은거로 집어넣는다.
+        /* dist[a][b]가 이미 채워져있다면.. cost가 더 낮은거로 집어넣는다.
         if (dist[a][b] != INF)
             if (dist[a][b] > c)
                 dist[a][b] = c;
             else
                 continue;
         else
-            dist[a][b] = c;
+            dist[a][b] = c; */
+        dist[a][b] = min(dist[a][b], c);
     }
     floyd(n);
     for (int i = 1; i <= n; i++)
