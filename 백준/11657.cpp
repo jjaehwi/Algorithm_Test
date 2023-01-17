@@ -5,7 +5,7 @@
 using namespace std;
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)
 #define MAX_SIZE 501
-const int INF = 1e10;
+const int INF = 1e9;
 
 struct edge
 {
@@ -14,7 +14,7 @@ struct edge
 };
 
 // vector<edge> adj[MAX_SIZE];
-vector<vector<edge>> adj;
+vector<edge> adj[MAX_SIZE];
 long long dist[MAX_SIZE];
 
 // 음의 사이클이 존재하면 false 반환
@@ -74,7 +74,6 @@ int main()
     fastio;
     int n, m;
     cin >> n >> m;
-    adj.resize(n + 1);
     for (int i = 1; i <= m; i++)
     {
         int a, b, c;
