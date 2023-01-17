@@ -9,7 +9,7 @@
 using namespace std;
 
 int N, C;
-vector<long long> v;
+vector<int> v;
 
 int max_dist()
 {
@@ -23,11 +23,11 @@ int max_dist()
         // mid 간격 갱신
         int mid = (left + right) / 2;
 
-        long long start = v[0]; // 시작 공유기 위치
+        int start = v[0]; // 시작 공유기 위치
 
         for (int i = 1; i < N; i++)
         {
-            long long end = v[i];
+            int end = v[i];
             // 공유기 간격이 기준 간격을 넘는지 확인, 넘는 다면 공유기를 설치하고, 그 때 공유기가 놓인 위치를 시작 위치로 변경
             if (end - start >= mid)
             {
