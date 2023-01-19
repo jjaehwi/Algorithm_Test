@@ -40,8 +40,10 @@ int main()
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#define MAX_SIZE 501
 using namespace std;
+#define MAX_SIZE 1001
+int arr[MAX_SIZE];
+int dp[MAX_SIZE]
 int main(){
     int n;
     int arr[MAX_SIZE];
@@ -73,5 +75,7 @@ for(int i=0; i<n; i++){
     dp[i] = val + 1; // 자신 포함
 }
 int ans = 0;
-...
+for(int i=0; i<n;i++){
+    max()
+}
 */
