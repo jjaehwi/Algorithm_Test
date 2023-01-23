@@ -7,16 +7,16 @@ using namespace std;
 #define MAX_VALUE 1001         //'N이 1~1000 이므로 1000번째 인덱스에 접근 -> 크기 1001까지 선언
 int N, M, V;                   // 노드 개수, 간선 개수, 시작할 노드 번호
 int mat[MAX_VALUE][MAX_VALUE]; // 인접행렬 배열 선언
-int visit[MAX_VALUE];          // visit 배열 default 는 0으로. . .
+int visited[MAX_VALUE];        // visited 배열 default 는 0으로. . .
 
 void dfs(int v)
 {
 
     cout << v << ' ';
-    visit[v] = 1; // 방문한 노드를 visit 0에서 1로 변경
+    visited[v] = 1; // 방문한 노드를 visited 0에서 1로 변경
     for (int i = 1; i <= N; i++)
     {
-        if (visit[i] == 1 || mat[v][i] == 0)
+        if (visited[i] == 1 || mat[v][i] == 0)
             continue;
         dfs(i); // dfs에서 재귀를 사용
     }
@@ -26,7 +26,7 @@ void bfs(int v)
 {
     queue<int> q; // bfs에서는 q를사용
     q.push(v);
-    visit[v] = 0; // 방문한 노드를 visit 1에서 0으로 변경
+    visited[v] = 0; // 방문한 노드를 visited 1에서 0으로 변경
     while (!q.empty())
     {
         v = q.front();
@@ -34,10 +34,10 @@ void bfs(int v)
         q.pop();
         for (int i = 1; i <= N; i++)
         {
-            if (visit[i] == 0 || mat[v][i] == 0)
+            if (visited[i] == 0 || mat[v][i] == 0)
                 continue;
             q.push(i);
-            visit[i] = 0;
+            visited[i] = 0;
         }
     }
 }
