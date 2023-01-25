@@ -1,5 +1,77 @@
 // DFS와 BFS S2
 // 알고리즘 분류 - 그래프 이론, 그래프 탐색, 너비 우선 탐색, 깊이 우선 탐색
+
+// vector 사용 풀이
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+using namespace std;
+#define MAX_SIZE 1001
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
+int N, M, V;
+vector<vector<int>> adj;
+bool visited[MAX_SIZE] = {
+    false,
+};
+
+void dfs(int startNode)
+{
+    cout << startNode << " ";
+    visited[startNode] = true; // 시작 노드 방문처리
+    int adjLengh = adj[startNode].size();
+    for (int i = 0; i < adjLengh; i++)
+    {
+        int nextNode = adj[startNode][i];
+        if (!visited[nextNode])
+            dfs(nextNode);
+    }
+}
+void bfs(int startNode)
+{
+    queue<int> q;
+    q.push(startNode);
+    visited[startNode] = true;
+    while (!q.empty())
+    {
+        int nowNode = q.front();
+        q.pop();
+        cout << nowNode << " ";
+        int adjLength = adj[nowNode].size();
+        for (int i = 0; i < adjLength; i++)
+        {
+            int nextNode = adj[nowNode][i];
+            if (!visited[nextNode])
+            {
+                visited[nextNode] = true;
+                q.push(nextNode);
+            }
+        }
+    }
+}
+int main()
+{
+    fastio;
+    cin >> N >> M >> V;
+    adj.resize(N + 1);
+    for (int i = 0; i < M; i++)
+    {
+        int x, y;
+        cin >> x >> y;
+        // 인접 리스트 표시
+        adj[x].push_back(y);
+        adj[y].push_back(x);
+    }
+    for (int i = 1; i <= N; i++)
+        sort(adj[i].begin(), adj[i].end());
+    dfs(V);
+    for (int i = 0; i < MAX_SIZE; i++)
+        visited[i] = false;
+    cout << "\n";
+    bfs(V);
+}
+
+/* 배열 사용 풀이
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -56,3 +128,4 @@ int main()
     bfs(V);
     return 0;
 }
+*/
