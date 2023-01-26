@@ -1,3 +1,54 @@
+// 바이러스 S3
+// 그래프 탐색, bfs, dfs
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
+#define MAX_SIZE 101
+int N, M, cnt; // 노드 수, 간선 수, 감염되는 수
+vector<vector<int>> adj;
+bool visited[MAX_SIZE];
+
+void bfs(int startNode)
+{
+    queue<int> q;
+    visited[startNode] = true;
+    q.push(startNode);
+    while (!q.empty())
+    {
+        int nowNode = q.front();
+        q.pop();
+        for (int i = 0; i < adj[nowNode].size(); i++)
+        {
+            int nextNode = adj[nowNode][i];
+            if (!visited[nextNode])
+            {
+                cnt++;
+                visited[nextNode] = true;
+                q.push(nextNode);
+            }
+        }
+    }
+}
+
+int main()
+{
+    fastio;
+    cin >> N >> M;
+    adj.resize(N + 1);
+    for (int i = 0; i < M; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    bfs(1);
+    cout << cnt;
+}
+
+/*
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -35,3 +86,4 @@ int main()
     dfs(1);
     cout << cnt << "\n";
 }
+*/
