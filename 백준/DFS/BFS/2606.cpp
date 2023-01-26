@@ -35,6 +35,7 @@ void bfs(int startNode)
 int main()
 {
     fastio;
+    int virus = 0;
     cin >> N >> M;
     adj.resize(N + 1);
     for (int i = 0; i < M; i++)
@@ -45,7 +46,16 @@ int main()
         adj[b].push_back(a);
     }
     bfs(1);
-    cout << cnt;
+    // visited를 세는 풀이
+    for (int i = 1; i <= MAX_SIZE; i++)
+    {
+        if (visited[i])
+            virus++;
+    }
+    cout << virus - 1; // 1 제외
+
+    // 탐색 할 때 마다 cnt 를 증가시켜서 찾는 풀이
+    // cout<<cnt;
 }
 
 /*
