@@ -1,4 +1,5 @@
-// 계단오르기 dp
+// 계단오르기 S3
+// DP
 #include <iostream>
 #include <algorithm>
 using namespace std;
