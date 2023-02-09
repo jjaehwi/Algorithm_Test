@@ -1,28 +1,28 @@
+// 이친수 S3
+// dp
 #include <iostream>
-
 using namespace std;
-long long dp[91];
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
+#define MAX_SIZE 91
+int N;
+long long dp[MAX_SIZE];
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin >> n;
+    fastio;
+    cin >> N;
     dp[1] = 1;
     dp[2] = 1;
-    /*    for (int i = 3; i <= n; i++) {
-            dp[i] = 1;
-            for (int j = 2; i - j >= 1; j++) {
-                dp[i]+= dp[i - j];
-            }
-        }
-        */
-    for (int i = 3; i <= n; i++)
-    {
-        dp[i] = dp[i - 1] + dp[i - 2];
-    }
-    cout << dp[n];
-
-    return 0;
+    for (int i = 3; i <= N; i++)
+        dp[i] = dp[i - 2] + dp[i - 1];
+    cout << dp[N];
 }
+
+// 10
+
+// 100 101
+
+// 1000 1001 1010
+
+// 10000 10001 10010 10100 10101
+
+// 100000 100001 100010 100100 100101 101000 101001 101010
