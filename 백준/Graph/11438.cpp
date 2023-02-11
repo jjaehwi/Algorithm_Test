@@ -1,3 +1,5 @@
+// LCA 2 P5
+// 트리, LCA (최소 공통 조상), 희소 배열
 #include <iostream>
 #include <vector>
 #include <queue>

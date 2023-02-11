@@ -1,3 +1,5 @@
+// 집합의 표현 G4
+// 분리 집합, 유니온 파인드
 #include <iostream>
 #include <string>
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)
