@@ -106,11 +106,130 @@
 
 ## 최단 경로(shortest path) 알고리즘
 
+- 최단 경로 문제란 `가중 그래프에서 간선의 가중치의 합이 최소`가 되는 경로를 찾는 문제이다.
+
+**최단 경로 문제의 종류**
+
+1. 단일 출발 (single-source) 최단 경로
+
+   - 어떤 하나의 정점에서 출발하여 나머지 모든 정점 까지의 최단 경로를 찾는 문제
+
+2. 단일 도착 (single-destination) 최단 경로
+
+   - 모든 정점에서 출발하여 어떤 하나의 정점까지의 최단 경로를 찾는 문제
+
+   - 그래프 내의 간선들을 뒤집으면 단일 출발 최단거리 문제로 바뀔 수 있다.
+
+3. 단일 쌍 (single-pair) 최단 경로
+
+   - 어떤 정점 v 에서 v' 로 가는 최단 경로를 구하는 문제
+
+4. 전체 쌍 (all-pair) 최단 경로
+
+   - 모든 정점 쌍들 사이의 최단 경로를 찾는 문제
+
+**주요 알고리즘**
+
+1. BFS (완전 탐색 알고리즘)
+
+   - `가중치가 없거나 모든 가중치가 동일한 그래프`에서 최단경로를 구하는 경우 가장 빠름
+
+2. 다익스트라 알고리즘
+
+   - `음이 아닌 가중 그래프에`서의 단일 쌍, 단일 출발, 단일 도착 최단 경로 문제
+
+3. 벨만-포드 알고리즘
+
+   - `음수도 가능한 가중 그래프`에서의 단일 쌍, 단일 출발, 단일 도착 최단 경로 문제
+
+   - 다익스트라보다 느림
+
+4. 플로이드 워셜 알고리즘
+
+   - `전체 쌍 최단 경로` 문제
+
 ### 1. 다익스트라 (Dijkstra)
 
-### 2. 플로이드-워셜 (Floyd-Warshall)
+- V 개의 정점과 `음수가 아닌 E 개의 간선`을 가진 그래프 G에서 `특정 출발 정점 (S)`에서 부터 `다른 모든 정점`까지의 최단 경로를 구하는 알고리즘
 
-### 3. 벨만-포드 (Bellman-Ford)
+**특징**
+
+- 각 정점을 최대 한번씩만 방문하여 최단 거리를 확정한다. 그러므로 `음의 가중치를 가질 수 없다.`
+
+- `아직 방문하지 않은 정점들 중 최단 거리인 점을 찾아 방문하여 최단 거리를 확정`하고, 이를 반복하는 식으로 진행된다.
+
+- 총 V x V 번 연산이 필요하다. 따라서 `O(V^2)`의 시간 복잡도를 가진다.
+
+- 방문하지 않은 정점 중에서 최단 거리가 최소인 정점을 찾는 과정에서 `우선순위 큐 혹은 힙 자료구조`를 이용하면 더욱 개선된 알고리즘이 가능하다.
+
+**동작 및 구현**
+
+`노드 설정 및 간선 연결` : 벡터의 크기를 재할당 한 후 해당 노드에 간선과 가중치를 넣어준다.
+
+```
+adj.resize(V + 1);
+for (int i = 0; i < E; i++)
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        adj[u].push_back({v, w});
+    }
+```
+
+`초기화` : 우선 순위 큐를 만들고 모든 정점의 최단거리를 무한대로 초기화한다. 그리고 시작점을 큐에 넣은 후 현재 최단거리 dist를 0으로 초기화한다.
+
+```
+ priority_queue<edge> pq; // 우선 순위 큐
+
+    // 초기화
+    // 우선 모든 정점의 최단거리를 무한대로 숫자를 정해둔다.
+    for (int i = 0; i <= V; i++)
+        dist[i] = INF;
+
+   // 시작점을 큐에 넣고, dist를 0으로 설정한다.
+    pq.push({startNode, 0});
+    dist[startNode] = 0;
+```
+
+`최단 거리 갱신` : 큐에서 값을 하나씩 꺼내 해당 정점에서 나가는 간선들을 전부 순회하며 다음으로 가는 정점들에 대한 가중치(최단 거리)를 계산한다. 다음에 갈 점의 최단거리보다, 지금 점 + 다음 점으로의 가중치가 더 작다면 최단거리를 갱신하고, 큐에 해당 지점을 넣는다.
+
+```
+    // 우선순위 큐에서 값을 꺼내온다.
+    while (!pq.empty())
+    {
+        edge top = pq.top();
+        pq.pop();
+
+        int nowVertex = top.end; // 현재의 정점
+        int nowCost = top.cost;
+
+        // 안써도 무관한데,, 시간 좀 줄어듬
+        if (dist[nowVertex] < nowCost)
+            continue;
+
+        // 해당 정점에서 나가는 간선들을 순회하여, 다음 갈 수 있는 정점들에 대해 가중치(최단거리)를 계산한다.
+        int len = adj[nowVertex].size();
+        for (int i = 0; i < len; i++)
+        {
+            edge next = adj[nowVertex][i];
+
+            // 다음에 갈 점의 최단거리보다, 지금 점 + 다음 점으로의 가중치가 더 작다면
+            // 최단거리를 갱신하고, 큐에 해당 지점을 넣는다.
+            if (dist[next.end] > dist[nowVertex] + next.cost)
+            {
+                dist[next.end] = dist[nowVertex] + next.cost;
+                pq.push({next.end, dist[next.end]}); // 다음에 갈 지점을 큐에 넣어야한다! 최단거리는 방금 계산한 그 값으로 넣어야한다. (현재의 최단거리)
+                // 갱신이 되는 것들에 대해서만 큐에 넣어서 확인한다.
+            }
+        }
+    }
+```
+
+ex) [연습문제 백준 1753번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1753.cpp)
+
+### 2. 벨만-포드 (Bellman-Ford)
+
+### 3. 플로이드-워셜 (Floyd-Warshall)
 
 ## 서로소 집합 (Disjoint Set, Union-Find)
 
@@ -174,7 +293,7 @@ int find(int n)
 }
 ```
 
-[연습문제 백준 1717번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1717.cpp)
+ex) [연습문제 백준 1717번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1717.cpp)
 
 ### 최소 신장 트리 (Minimum Spanning Tree)
 
@@ -272,7 +391,9 @@ ex) [백준 1922번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/
 
 진입 차수가 없다는 것 -> 돌아올 수 없다 -> 우선 순위가 가장 높은 것 -> 가장 처음에 동작하는 것
 
-`어떤 순서나 선행, 그래프` 에 관한 얘기가 나오면 위상 정렬을 의심해보자.. ex) [백준 1516번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1516.cpp)
+`어떤 순서나 선행, 그래프` 에 관한 얘기가 나오면 위상 정렬을 의심해보자..
+
+ex) [백준 1516번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1516.cpp)
 
 **위상 정렬의 동작**
 
