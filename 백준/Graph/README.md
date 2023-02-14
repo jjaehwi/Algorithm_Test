@@ -546,8 +546,6 @@ ex) [백준 1922번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/
 
 `어떤 순서나 선행, 그래프` 에 관한 얘기가 나오면 위상 정렬을 의심해보자..
 
-ex) [백준 1516번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1516.cpp)
-
 **위상 정렬의 동작**
 
 1. 진입 차수가 0 인 노드를 큐에 넣는다.
@@ -561,6 +559,46 @@ ex) [백준 1516번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/
 - 큐가 빌 때까지 원소를 계속 꺼내서 처리하는 과정을 반복하고, 모든 원소를 방문하기 전에 큐가 빈다면 사이클이 존재한다고 판단 가능하다.
 
 - 사이클이 존재하는 경우 사이클에 포함되어 있는 원소 중에서 어떠한 원소도 큐에 들어가지 못하기 때문이다.
+
+```
+void topologySort()
+{
+    queue<int> q;
+    // 위상정렬 시작
+    // 큐에 in-degree가 0 인 정점
+    for (int i = 1; i <= N; i++)
+    {
+        if (inDegree[i] == 0)
+        {
+            q.push(i); // 넣을 때는 해당 정점의 인덱스를 넣어야한다.
+            dp[i] = cost[i];
+        }
+    }
+    // n개까지 전체 방문하기 전 큐가 비었다면 사이클이 발생했다는 뜻
+    while (!q.empty())
+    {
+        int front = q.front();
+        q.pop();
+        // 방문한 정점에서 나가는 간선(out-degree)에 대한 계산
+        // 해당 간선들이 들어오는 정점, 즉 도착점에서는 들어오는 간선(in-degree)이 줄어드는 것이기 때문에
+        // 간선 수만큼 in-degree를 줄여줘야 한다.
+        for (int j = 0; j < edge[front].size(); j++)
+        {
+            int nowEndV = edge[front][j];
+            inDegree[nowEndV]--; // 도착점의 indegree를 1빼준다.
+            // 만약 indegree가 0이라면
+            // 다음 위상정렬 계산을 위해 해당 정점을 큐에 삽입한다.
+            if (inDegree[nowEndV] == 0)
+                q.push(nowEndV);
+            dp[nowEndV] = max(dp[nowEndV], cost[nowEndV] + dp[front]);
+        }
+    }
+    for (int i = 1; i <= N; i++)
+        cout << dp[i] << "\n";
+}
+```
+
+ex) [백준 1516번](https://github.com/jjaehwi/Algorithm_Test/blob/main/백준/Graph/1516.cpp)
 
 ### DAG (Directed Acyclic Graph)
 
