@@ -1,3 +1,5 @@
+// 이항 계수 1 B1
+// 수학, 구현, 조합론
 #include <iostream>
 
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)

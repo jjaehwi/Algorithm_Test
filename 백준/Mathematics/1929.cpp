@@ -1,6 +1,7 @@
-// 에라토스테네스의 체
-#include <iostream>
+// 소수 구하기 S3
+// 수학, 정수론, 소수 판정, 에라토스테네스의 체
 
+#include <iostream>
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)
 #define MAX 1000000
 

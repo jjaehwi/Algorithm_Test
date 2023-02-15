@@ -1,3 +1,5 @@
+// 소인수분해 B1
+// 수학, 소수 판정
 #include <iostream>
 
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)
