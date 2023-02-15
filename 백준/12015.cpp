@@ -1,4 +1,5 @@
 // 가장 긴 증가하는 부분 수열 2 LIS (최장증가수열)
+// 이분 탐색, 가장 긴 증가하는 부분 수열: o(n log n)
 #include <iostream>
 #include <vector>
 using namespace std;

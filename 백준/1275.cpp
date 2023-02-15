@@ -1,3 +1,5 @@
+// 커피숍2 G1
+// 자료 구조, 세그먼트 트리
 #include <iostream>
 using namespace std;
 #define MAX 1000001

@@ -1,3 +1,5 @@
+// 부분합 G4
+// 투 포인터, 누적 합
 #include <iostream>
 #include <vector>
 using namespace std;

@@ -1,3 +1,5 @@
+// 조약돌 꺼내기 S3
+// 수학, 조합론, 확률론
 #include <iostream>
 #include <vector>
 

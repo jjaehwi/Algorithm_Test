@@ -1,3 +1,5 @@
+// 최대 힙 S2
+// 자료구조, 우선순위 큐
 #include <iostream>
 #include <queue>
 using namespace std;

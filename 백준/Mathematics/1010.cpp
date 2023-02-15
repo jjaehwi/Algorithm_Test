@@ -1,3 +1,5 @@
+// 다리 놓기 S5
+// dp, 수학, 조합론
 #include <iostream>
 
 #define fastio ios_base::sync_with_stdio(false), cout.tie(NULL), cin.tie(NULL)

@@ -1,3 +1,5 @@
+// 스도쿠 G4
+// 백트래킹
 #include <iostream>
 using namespace std;
 int arr[9][9];

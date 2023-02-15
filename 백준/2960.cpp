@@ -1,3 +1,5 @@
+// 에라토스테네스의 체 S4
+// 수학, 구현, 정수론, 소수 판정, 에라토스테네스의 체
 #include <iostream>
 #include <vector>
 

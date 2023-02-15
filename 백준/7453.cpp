@@ -1,3 +1,5 @@
+// 합이 0 인 네 정수 G2
+// 투포인터, 정렬, 이분 탐색
 #include <iostream>
 #include <algorithm>
 #include <vector>

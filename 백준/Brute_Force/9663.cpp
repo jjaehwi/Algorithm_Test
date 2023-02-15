@@ -1,3 +1,5 @@
+// N-queens G4
+// 브루트포스, 백트래킹, n-queens
 #include <iostream>
 using namespace std;
 int N, result = 0;

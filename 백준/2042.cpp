@@ -1,3 +1,5 @@
+// 구간 합 구하기 G1
+// 세그먼트 트리
 #include <iostream>
 using namespace std;
 #define MAX 1000001

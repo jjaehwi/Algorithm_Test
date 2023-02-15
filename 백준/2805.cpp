@@ -1,3 +1,5 @@
+// 나무 자르기 S2
+// 이분 탐색, 매개 변수 탐색
 #include <iostream>
 #include <algorithm>
 #include <vector>

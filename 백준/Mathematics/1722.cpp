@@ -1,3 +1,5 @@
+// 순열의 순서 G5
+// 수학, 구현, 조합론
 #include <iostream>
 #include <vector>
 

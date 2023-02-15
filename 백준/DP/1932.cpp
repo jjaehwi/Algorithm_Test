@@ -1,4 +1,5 @@
-// 정수 삼각형 dp
+// 정수 삼각형 S1
+// dp
 #include <iostream>
 #include <algorithm>
 using namespace std;

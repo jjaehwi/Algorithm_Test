@@ -1,3 +1,5 @@
+// N과 M (9) S2
+// 백트래킹
 // #include <iostream>
 // #include <vector>
 // #include <algorithm>

@@ -1,3 +1,5 @@
+// 개똥벌레 G5
+// 이분탐색, 누적 합
 // lower, upper bound 이해 : https://breakcoding.tistory.com/188
 #include <iostream>
 #include <vector>
