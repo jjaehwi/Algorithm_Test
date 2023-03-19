@@ -1,6 +1,8 @@
 // N과 M (10) S2
 // 백트래킹
 // N 개의 자연수가 중복으로 주어질 때, 중복되는 수열을 여러 번 출력 x
+// 고른 수열은 비내림차순이어야 한다.
+
 #include <iostream>
 #include <stdio.h>
 #include <algorithm>
