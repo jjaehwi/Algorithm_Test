@@ -9,9 +9,6 @@ int N, K;
 int DP[101][100001];
 int W[101];
 int V[101];
-
-// 점화식 max(DP[i-1][j], DP[i-1][j-W[i]])
-
 int main()
 {
     cin >> N >> K;
