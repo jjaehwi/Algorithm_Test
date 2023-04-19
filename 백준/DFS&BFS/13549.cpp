@@ -1,16 +1,15 @@
+// 숨바꼭질 3 G5
+// 그래프 이론, bfs
 #include <iostream>
 #include <queue>
-#include <stdio.h>
-#include <cstring> // memset
-
+#include <cstring>
 using namespace std;
-
-#define MAX_SIZE 100000 + 1
-
-int N, K;
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
+#define MAX_SIZE 100001
+int N, K, res;
 bool visited[MAX_SIZE];
 
-int bfs()
+void bfs()
 {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
     q.push({0, N});
@@ -19,10 +18,11 @@ int bfs()
     {
         int time = q.top().first;
         int x = q.top().second;
+        // cout << "time: " << time << ", current x: " << x << "\n";
         q.pop();
 
         if (x == K)
-            return time;
+            res = time;
 
         if (x * 2 < MAX_SIZE && !visited[x * 2])
         {
@@ -46,7 +46,9 @@ int bfs()
 
 int main()
 {
-    scanf("%d %d", &N, &K);
-    printf("%d\n", bfs());
+    fastio;
+    cin >> N >> K;
+    bfs();
+    cout << res << "\n";
     return 0;
 }
