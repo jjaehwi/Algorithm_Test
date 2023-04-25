@@ -4,6 +4,8 @@
 
 - [수학](https://github.com/jjaehwi/Algorithm_Test/tree/main/백준/Mathematics)
 
+- [자료 구조](https://github.com/jjaehwi/Algorithm_Test/tree/main/백준/Data_Structure)
+
 - [Greedy](https://github.com/jjaehwi/Algorithm_Test/tree/main/백준/Greedy)
 
 - [브루트포스](https://github.com/jjaehwi/Algorithm_Test/tree/main/백준/Implementation/Brute_Force)
