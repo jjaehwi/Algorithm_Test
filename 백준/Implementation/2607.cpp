@@ -57,12 +57,14 @@ int main()
                 res++;
         }
 
-        // 기준 문자가 한 글자 길 때
-        else if (stand.length() - 1 == comp.length() && stand.length() - same <= 1)
+        // 기준 문자가 한 글자 길 때, 기준 문자열에서 하나 빼는 경우이므로 하나만 달라야함
+        // (ex) ABCD / ABD (same = 3, stand.length() = 4)
+        else if (stand.length() - 1 == comp.length() && stand.length() - same == 1)
             res++;
 
-        // 기준 문자가 한 글자 짧을 때
-        else if (stand.length() + 1 == comp.length() && same == stand.length())
+        // 기준 문자가 한 글자 짧을 때, 기준 문자열에 추가하는 경우여야하므로 다 똑같아야함
+        // (ex) ABC / ABCD (same = 3, stand.length() = 3)
+        else if (stand.length() + 1 == comp.length() && stand.length() - same == 0)
             res++;
 
         else
