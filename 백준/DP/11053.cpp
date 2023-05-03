@@ -10,6 +10,7 @@ int N;
 vector<int> v(MAX_SIZE);
 // 자기 자신을 포함하는 길이이므로 1 로 채운다. (자기 자신 뿐이라면 길이는 1)
 vector<int> dp(MAX_SIZE, 1);
+// DP[a] = b 의 의미는 "a번째 값이 가지는 가장 긴 증가하는 부분수열의 길이는 b"
 int main()
 {
     fastio;
