@@ -57,8 +57,6 @@ int main()
             }
             q.pop();
             count++;
-            // if (q.front().index == m)
-            //     result = count;
         }
         cout << result << "\n";
     }
